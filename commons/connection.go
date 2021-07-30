@@ -1,6 +1,7 @@
 package commons
 
 import (
+	"api-rest/models"
 	"log"
 
 	"github.com/jinzhu/gorm"
@@ -13,4 +14,11 @@ func GetConnection() *gorm.DB {
 		log.Fatal(err)
 	}
 	return db
+}
+func Migrate() {
+	db := GetConnection()
+	defer db.Close()
+	log.Println("Migrating...")
+
+	db.AutoMigrate(&models.Person{})
 }
