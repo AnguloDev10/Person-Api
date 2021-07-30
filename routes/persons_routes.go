@@ -9,6 +9,7 @@ import (
 func SetPersonRoutes(router *mux.Router) {
 	subRoute := router.PathPrefix("/person/api-v1").Subrouter()
 	subRoute.HandleFunc("/all", controller.GetAll).Methods("GET")
-	//to-do: Continuos with other routes crud
-
+	subRoute.HandleFunc("/save", controller.Save).Methods("POST")
+	subRoute.HandleFunc("/delete/{id}", controller.Delete).Methods("DELETE")
+	subRoute.HandleFunc("/find/{id}", controller.Get).Methods("GET")
 }

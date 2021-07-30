@@ -47,7 +47,7 @@ func Save(writer http.ResponseWriter, request *http.Request) {
 
 	//catching an error and making good practices
 
-	error := json.NewDecoder(request.Body).Decode(person)
+	error := json.NewDecoder(request.Body).Decode(&person)
 
 	if error != nil {
 		log.Fatal(error)
